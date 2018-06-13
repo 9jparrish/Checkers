@@ -1,9 +1,9 @@
 package checkers;
 
-import java.awt.Color;
-import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.*;
+import java.awt.event.*;
+import java.util.*;
+
 
 import javax.swing.*;
 
@@ -67,6 +67,22 @@ public Checker() {
 	setVisible(true);
 }
 
+public void paint(Graphics g) {
+	super.paint(g);
+	for(int i = 0; i < spots.length; i++) {
+		for(int j = 0; j < spots[i].length; j++) {
+			//top 3 rows
+			if(i < 3) {
+				if(spots[i][j].getBackground().equals(Color.BLACK)) {
+					g.setColor(Color.RED);
+					g.fillOval(4 + j*20, 4 + i*20, 10, 10);
+				}
+			}
+			
+		}
+	}
+	
+}
 
 public void Checkerboard() {
 	checkerBoard.setLayout(new GridLayout(8,8));
@@ -89,6 +105,8 @@ public void actionPerformed(ActionEvent e) {
 	}
 	
 }
+
+
 
 	
 }
