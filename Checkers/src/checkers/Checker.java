@@ -18,8 +18,6 @@ public Checker() {
 	super("Checker");
 	setSize(400,400);
 	setDefaultCloseOperation(EXIT_ON_CLOSE);
-	checkerBoard.setLayout(new GridLayout(8,8));
-	
 	
 	play.setLayout(new GridLayout(2,3));
 	letsPlay.addActionListener(this);
@@ -34,15 +32,18 @@ public Checker() {
 		}
 	}
 	add(play);
-	add(checkerBoard);
 	setVisible(true);
 }
 
+
 public void Checkerboard() {
-	
+	checkerBoard.setLayout(new GridLayout(8,8));
+	add(checkerBoard);
+	play.setVisible(false);
+	setVisible(true);
 }
+
 public static void main(String[] args) {
-	
 	new Checker();
 }
 
