@@ -10,6 +10,7 @@ public class BlackCircle extends JPanel {
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		this.setBackground(Color.WHITE);
+		g.setColor(Color.BLUE);
 		g.drawOval(0, 0, 20, 20);
 		g.fillOval(0, 0, 20, 20);
 	}

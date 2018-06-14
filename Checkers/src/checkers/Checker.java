@@ -17,6 +17,8 @@ private JButton[][] spots = new JButton[8][8];
 private boolean black = false;
 private boolean black2 = true;
 private boolean row = true;
+private int checkerSquareHeight;
+private int checkerSquareWidth;
 
 public Checker() {
 	super("Checker");
@@ -52,6 +54,7 @@ public void checkerboardUI() {
 				black = false;
 				BlackCircle blackChecker = new BlackCircle();
 				add(blackChecker);
+				setVisible(true);
 			} else {
 				spots[i][j].setBackground(Color.WHITE);
 				black = true;
@@ -60,6 +63,9 @@ public void checkerboardUI() {
 				if(black2) {
 					spots[i][j].setBackground(Color.BLACK);
 					black2 = false;
+					BlackCircle blackChecker = new BlackCircle();
+					add(blackChecker);
+					setVisible(true);
 				} else {
 					spots[i][j].setBackground(Color.WHITE);
 					black2 = true;
@@ -68,27 +74,16 @@ public void checkerboardUI() {
 		
 			spots[i][j].setBorderPainted(false);
 			spots[i][j].setOpaque(true);
+			checkerSquareHeight = spots[i][j].getHeight();
+			checkerSquareWidth = spots[i][j].getWidth();
+			System.out.println(spots[i][j].getLocation());
 			checkerBoard.add(spots[i][j]);
 		}
 	}
-	paint(null);
 	add(play);
 	setVisible(true);
 }
 
-public void paintComponent(Graphics g) {
-	super.paint(g);
-	for(int i = 0; i < spots.length; i++) {
-		for(int j = 0; j < spots[i].length; j++) {
-			//top 3 rows
-			if(i < 3) {
-				if(spots[i][j].getBackground().equals(Color.BLACK)) {
-					BlackCircle blackChecker = new BlackCircle();
-				}
-			}	
-		}
-	}
-}
 
 public void Checkerboard() {
 	checkerBoard.setLayout(new GridLayout(8,8));
