@@ -10,8 +10,8 @@ import javax.swing.*;
 
 public class Checker extends JFrame implements ActionListener {
 
-private JPanel checkerBoard = new JPanel();
-private JPanel play = new JPanel();
+
+JPanel play = new JPanel();
 private JButton letsPlay = new JButton("Lets play");
 private JButton[][] spots = new JButton[8][8];
 private boolean black = false;
@@ -27,6 +27,8 @@ public Checker() {
 //end of constructor
 
 public void checkerboardUI() {
+	add(new Checkerboard());
+	add(new Checker());
 	Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 	setSize(screenSize.width,screenSize.height);
 	setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -53,7 +55,7 @@ public void checkerboardUI() {
 				spots[i][j].setBackground(Color.BLACK);
 				black = false;
 				BlackCircle blackChecker = new BlackCircle();
-				add(blackChecker);
+				getContentPane().add(blackChecker);
 				setVisible(true);
 			} else {
 				spots[i][j].setBackground(Color.WHITE);
@@ -64,7 +66,7 @@ public void checkerboardUI() {
 					spots[i][j].setBackground(Color.BLACK);
 					black2 = false;
 					BlackCircle blackChecker = new BlackCircle();
-					add(blackChecker);
+					getContentPane().add(blackChecker);
 					setVisible(true);
 				} else {
 					spots[i][j].setBackground(Color.WHITE);
@@ -77,7 +79,7 @@ public void checkerboardUI() {
 			checkerSquareHeight = spots[i][j].getHeight();
 			checkerSquareWidth = spots[i][j].getWidth();
 			System.out.println(spots[i][j].getLocation());
-			checkerBoard.add(spots[i][j]);
+			Checkerboard.add(spots[i][j]);
 		}
 	}
 	add(play);
@@ -85,14 +87,7 @@ public void checkerboardUI() {
 }
 
 
-public void Checkerboard() {
-	checkerBoard.setLayout(new GridLayout(8,8));
-	add(checkerBoard);
-	play.setVisible(false);
-	setVisible(true);
-	JOptionPane messageToStart = new JOptionPane("Red goes first");
-	messageToStart.showMessageDialog(null, "Red goes first");
-}
+
 
 
 
